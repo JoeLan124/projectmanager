@@ -36,7 +36,6 @@ export default function Dashboard({ projects }) {
         <meta name="description" content="Project Manager" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div className="text-center ">
         <h1 className="mt-10 font-extrabold text-2xl">Project Manager</h1>
         <form
@@ -151,6 +150,19 @@ export default function Dashboard({ projects }) {
           ))}
         </div>
       </div>
+      <p
+        className="text-center text-xs mt-20 hover:underline cursor-pointer"
+        onClick={async (e) => {
+          e.preventDefault();
+          await fetch("/api/cancel", {
+            method: "POST",
+          });
+
+          router.reload();
+        }}
+      >
+        cancel your subscription
+      </p>
     </div>
   );
 }
